@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function App() {
 	const questions = [
@@ -40,6 +40,15 @@ export default function App() {
 		},
 	]
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+	// Define function body to increment the question index variable
+	function handleAnswerClick() {
+        setCurrentIndex((prev) => prev + 1);
+    }
+
+	// Define a state variable here to track question status
+
 	return (
 		<div className="app">
 			{false ? (
@@ -52,16 +61,21 @@ export default function App() {
 						<div className="question-count">
 							<span>Question 1</span>/{questions.length}
 						</div>
+						{/* You should change the "0" here to a state variable */}
 						<div className="question-text">
-							{questions[0].questionText}
+							{questions[currentIndex].questionText}
 						</div>
 					</div>
-
+					{/* You should change the "0" here to a state variable */}
 					<div className="answer-section">
-						<button>{questions[0].answerOptions[0].answerText}</button>
-						<button>{questions[0].answerOptions[1].answerText}</button>
-						<button>{questions[0].answerOptions[2].answerText}</button>
-						<button>{questions[0].answerOptions[3].answerText}</button>
+						{questions[currentIndex].answerOptions.map((answer) => {
+							// Add onClick listener to this button
+							return (
+								<button key={answer.answerText} onClick={() => handleAnswerClick()}>
+									{answer.answerText}
+								</button>
+							)
+						})}
 					</div>
 				</>
 			)}
