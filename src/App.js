@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function App() {
 	const questions = [
@@ -52,16 +52,16 @@ export default function App() {
 						<div className="question-count">
 							<span>Question 1</span>/{questions.length}
 						</div>
-						{/* HINT: You can access first question using questions[0] */}
 						<div className="question-text">
 							{questions[0].questionText}
 						</div>
 					</div>
+
 					<div className="answer-section">
-						<button>Answer 1</button>
-						<button>Answer 2</button>
-						<button>Answer 3</button>
-						<button>Answer 4</button>
+						<button>{questions[0].answerOptions[0].answerText}</button>
+						<button>{questions[0].answerOptions[1].answerText}</button>
+						<button>{questions[0].answerOptions[2].answerText}</button>
+						<button>{questions[0].answerOptions[3].answerText}</button>
 					</div>
 				</>
 			)}
